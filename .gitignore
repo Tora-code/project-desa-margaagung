@@ -1,0 +1,38 @@
+# ============================================================
+#  Project Desa MargaAgung — .gitignore
+#  Tujuan: JANGAN pernah commit data pribadi warga (UU PDP)
+# ============================================================
+
+# ---- DATA WARGA / PRIBADI (JANGAN DIHAPUS DARI SINI) ----
+Data-desa/database_kk.csv
+Data-desa/admin_wa.csv
+Data-desa/antrean_koreksi.csv
+Antrean-surat/antrean_surat.csv
+Antrean-surat/antrean_ambil.csv
+Antrean-surat/notifikasi_antrean.csv
+Antrean-surat/notifikasi_antrean.txt
+ratings.csv
+*.sql
+
+# ---- Dokumen hasil surat (berisi NIK & data warga) ----
+Antrean-surat/*.docx
+Antrean-surat/_kirim/
+Antrean-surat/_backup/
+
+# ---- Arsip Excel sumber PRODESKEL (data kependudukan mentah) ----
+Data-desa/_arsip/sumber-excel/
+Data-desa/_arsip/laporan/
+Data-desa/_backup/
+_backup/
+
+# ---- File sementara / sensitif umum ----
+.env
+.env.*
+*.log
+*.key
+*.pem
+*.zip
+Thumbs.db
+desktop.ini
+~$*
+.DS_Store

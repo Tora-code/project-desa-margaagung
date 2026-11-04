@@ -36,3 +36,8 @@ Thumbs.db
 desktop.ini
 ~$*
 .DS_Store
+
+# ---- Python cache ----
+__pycache__/
+*.pyc
+_watcher_push.log

@@ -284,7 +284,7 @@ dikarantina ke `tanggal_perlu_dicek.csv`, dan NIK bermasalah didaftar di
   Keduanya ditandai `DATA UJI - HAPUS SETELAH PENGUJIAN` di kolom `Sumber`. Hapus dua
   baris ini kalau layanan sudah dinyatakan siap dipakai sungguhan.
 - **Ratings**: `ratings.csv` masih memuat 3 penilaian lama dari masa pengujian.
-- **Daftar petugas aktif**: RENDI (085658361716) dan TORA (089628949339) — sama
+- **Daftar petugas aktif**: RENDI (0812-xxxx-xxxx) dan TORA (0896-xxxx-xxxx) — sama
   dengan yang terdaftar di `admin_wa.csv`.
 
 ### Checklist serah terima (±15 menit)

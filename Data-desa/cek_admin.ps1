@@ -2,11 +2,11 @@
 # cek_admin.ps1 - Periksa apakah sebuah nomor WhatsApp terdaftar sebagai ADMIN.
 #
 # Hanya MEMBACA Data-desa\admin_wa.csv. Tidak pernah mengubah apa pun.
-# Menormalkan format nomor: 0856... / +62 856... / 62856... / 856... -> 62856...
+# Menormalkan format nomor: 0856... / +62 856... / 62812... / 856... -> 62812...
 #
 # Pemakaian:
-#   .\cek_admin.ps1 -Nomor "085658361716"
-#   .\cek_admin.ps1 -Nomor "+62 856-5836-1716" -Ringkas
+#   .\cek_admin.ps1 -Nomor "081234567890"
+#   .\cek_admin.ps1 -Nomor "+62 123-4567-890" -Ringkas
 #
 # Keluaran (baris pertama selalu STATUS):
 #   STATUS: ADMIN          -> nomor terdaftar & aktif
@@ -80,3 +80,4 @@ if ($aktif -ne "1") {
 }
 
 Selesai -Status "ADMIN" -Nama $nama -Jabatan $jabatan -Kode 0
+// uji kedua Rab, 04 Nov 2026 11.03.15

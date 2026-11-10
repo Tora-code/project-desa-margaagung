@@ -14,8 +14,8 @@ dan satu menu khusus untuk petugas desa di nomor yang sama.
 
 | Siapa | Bisa apa | Tidak bisa apa |
 |---|---|---|
-| **Warga** | Minta 12 jenis surat, cek status suratnya, minta dihubungkan ke petugas | Melihat data warga lain, melihat menu petugas, meminta surat di luar 12 daftar |
-| **Petugas desa** (nomor terdaftar) | Lihat antrean, menyetujui surat, mengabari warga, rekap, mencari data warga | Mengubah database warga langsung dari chat |
+| **Warga** | Minta 12 jenis surat, cek status suratnya, minta dihubungkan ke petugas, kirim masukan soal layanan (anonim) | Melihat data warga lain, melihat menu petugas, meminta surat di luar 12 daftar |
+| **Petugas desa** (nomor terdaftar) | Lihat antrean, menyetujui surat, mengabari warga, rekap, mencari data warga, membaca masukan warga | Mengubah database warga langsung dari chat |
 | **Operator teknis** | Menjalankan/memperbaiki program, backup, membangun ulang database | — |
 
 Yang menjawab warga adalah asisten otomatis (Hermes Agent dengan model DeepSeek,
@@ -45,6 +45,7 @@ Folder proyek:
 | `Data-desa\ringkasan_antrean_pagi.ps1` | Ringkasan surat belum diproses (jam 09.00) | Berjalan otomatis |
 | `Data-desa\dashboard_admin.ps1` | Rekap untuk menu admin | Dipakai petugas |
 | `Data-desa\catat_koreksi.ps1`, `lihat_koreksi.ps1`, `setujui_koreksi.ps1`, `terapkan_koreksi.ps1` | Antrean perbaikan data NIK | Dipakai petugas |
+| `Data-desa\catat_masukan.ps1`, `lihat_masukan.ps1` | Mencatat & membaca masukan warga soal layanan | Dipakai bot & petugas |
 | `Data-desa\bangun_database.bat` | Membangun ulang database dari file Excel | Operator teknis, sesekali |
 | `Data-desa\_backup\` | Backup database bertanggal | **JANGAN dihapus** |
 | `Data-desa\_arsip\sumber-excel\` | 6 file Excel resmi Dusun I–VI | **JANGAN dihapus** — bahan bangun ulang database |
@@ -57,13 +58,14 @@ Folder proyek:
 | `Antrean-surat\_kirim\` | Salinan dokumen bernama tanpa spasi (siap kirim WA) | Otomatis dibersihkan/diisi sendiri |
 | `Antrean-surat\_backup\` | Backup antrean bertanggal | **JANGAN dihapus** |
 | `ratings.csv` | Penilaian warga (1–10) per surat | Ditambah otomatis |
+| `masukan_warga.csv` | Masukan/saran warga soal layanan — **tanpa nama & nomor** | Ditambah otomatis |
 | `_backup\bersih-*.zip` | Arsip berkas lama sebelum dibersihkan | Simpan |
 
 ---
 
 ## 3. Fitur yang tersedia
 
-### Untuk warga (menu 14 pilihan)
+### Untuk warga (menu 15 pilihan)
 
 | No | Pilihan | No | Pilihan |
 |---|---|---|---|
@@ -74,13 +76,18 @@ Folder proyek:
 | 5 | Surat Keterangan Kematian | 12 | Surat Bepergian |
 | 6 | Surat Keterangan Pindah | 13 | Cek status surat saya |
 | 7 | Surat Keterangan Beda Nama | 14 | Tanya petugas desa |
+| 15 | Kasih masukan soal layanan | | |
 
 Warga membalas angka, bot menanyakan **nama lengkap + NIK** (sekaligus, satu pesan),
 lalu otomatis mengambil data dari database desa, membuat draf surat, meminta
 konfirmasi (`KONFIRMASI`), meneruskan ke antrean petugas, dan memberi nomor surat
 untuk cek status. Di akhir layanan warga diminta penilaian 1–10.
 
-### Untuk petugas desa (menu 6 pilihan)
+Pilihan 15 untuk **masukan soal layanan**: bot meminta warga menulis masukan atau
+saran dengan kalimat biasa, lalu mencatatnya **tanpa nama dan tanpa nomor HP**
+(anonim). Petugas membacanya lewat menu 7.
+
+### Untuk petugas desa (menu 7 pilihan)
 
 | No | Pilihan | Gunanya |
 |---|---|---|
@@ -90,6 +97,7 @@ untuk cek status. Di akhir layanan warga diminta penilaian 1–10.
 | 4 | Antrean pengambilan | Siapa saja yang belum mengambil suratnya |
 | 5 | Rekap hari ini | Jumlah surat per status hari ini |
 | 6 | Cari data warga | Mencari data warga dari nama + NIK |
+| 7 | Masukan warga | 5 masukan terbaru + jumlah totalnya |
 
 ### Yang berjalan sendiri tanpa disuruh
 
@@ -108,7 +116,7 @@ notifikasi dengan tambahan `-PakaiJamTenang`.
 
 ### Dari sisi warga
 
-1. Warga kirim pesan → bot mengirim menu 14 pilihan.
+1. Warga kirim pesan → bot mengirim menu 15 pilihan.
 2. Warga balas angka (mis. `1`) → bot minta nama lengkap + NIK.
 3. Bot memeriksa data ke database desa dan menampilkan ringkasan data warga.
 4. Bot menanyakan nomor HP dan keperluan surat.

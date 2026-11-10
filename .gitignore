@@ -42,9 +42,8 @@ __pycache__/
 *.pyc
 _watcher_push.log
 
-# ---- KELUARAN WARGA (jangan diunggah, sama seperti data warga) ----
-masukan_warga.csv
-masukan_warga*.csv
+# ---- Masukan warga: SENGAJA diunggah (isinya anonim, tanpa nama/nomor) ----
+# masukan_warga.csv tidak diabaikan atas keputusan pemilik, 10 Nov 2026.
 
 # ---- Skrip bantu lama di folder antrean (tidak dipakai, jangan diunggah) ----
 Antrean-surat/_buat_draft*.py
